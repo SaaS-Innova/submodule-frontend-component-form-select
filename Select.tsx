@@ -4,6 +4,7 @@ import { Dropdown } from "primereact/dropdown";
 import { ISelect } from "./select.model";
 import { IFormFieldType } from "../../../../library/utilities/constant";
 import { FormFieldError } from "../formFieldError/FormFieldError";
+import { useTranslation } from "react-i18next";
 
 export const Select = (props: ISelect) => {
   const {
@@ -21,7 +22,8 @@ export const Select = (props: ISelect) => {
     control,
     formState: { errors },
   } = useFormContext();
-
+  const { t } = useTranslation();
+  const defaultPlaceHolder: string = t("components.select.placeholder");
   const getClassNames = () => {
     let labelClassName = "";
     let fieldClassName = "";
@@ -72,7 +74,7 @@ export const Select = (props: ISelect) => {
                 handelChange && handelChange(val.value);
               }}
               className={`w-full ${errors[attribute] ? "p-invalid" : ""}`}
-              placeholder={placeholder}
+              placeholder={placeholder || defaultPlaceHolder}
               appendTo={appendTo}
               itemTemplate={itemTemplate}
               valueTemplate={valueTemplate}
