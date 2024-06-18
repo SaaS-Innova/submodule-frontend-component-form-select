@@ -13,7 +13,7 @@ export const Select = (props: ISelect) => {
     fieldType,
     itemTemplate,
     valueTemplate,
-    handelChange,
+    handleChange,
     appendTo,
   } = props;
   const { label, options, placeholder } = form[attribute];
@@ -71,7 +71,7 @@ export const Select = (props: ISelect) => {
               value={field.value}
               onChange={(val) => {
                 field.onChange(val.value);
-                handelChange && handelChange(val.value);
+                handleChange && handleChange(val.value);
               }}
               className={`w-full ${errors[attribute] ? "p-invalid" : ""}`}
               placeholder={placeholder || defaultPlaceHolder}

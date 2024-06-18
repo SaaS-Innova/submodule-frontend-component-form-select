@@ -1,7 +1,7 @@
 export interface ISelect {
   attribute: string;
   form: any;
-  handelChange?: (val: any) => void;
+  handleChange?: (val: any) => void;
   loading?: boolean;
   appendTo?: "self" | HTMLElement | undefined | null;
   itemTemplate?: (option: any) => JSX.Element;
