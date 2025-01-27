@@ -53,7 +53,9 @@ export const Select = (props: ISelect) => {
 
   const labelElement = (
     <label htmlFor={attribute} className={labelClassName}>
-      {label} {required && "*"}
+      <span className="capitalize-first">
+        {label} {required && "*"}
+      </span>
     </label>
   );
 
