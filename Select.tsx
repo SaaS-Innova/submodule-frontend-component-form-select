@@ -16,6 +16,7 @@ export const Select = (props: ISelect) => {
     valueTemplate,
     handleChange,
     appendTo,
+    showClear = false,
   } = props;
   const { label, options, placeholder } = form[attribute];
   const { required, disabled } = form[attribute].rules;
@@ -74,6 +75,7 @@ export const Select = (props: ISelect) => {
               itemTemplate={itemTemplate}
               valueTemplate={valueTemplate}
               disabled={disabled}
+              showClear={showClear}
             />
           )}
         />
