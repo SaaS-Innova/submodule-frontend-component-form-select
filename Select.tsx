@@ -66,8 +66,8 @@ export const Select = (props: ISelect) => {
               options={options}
               value={field.value}
               onChange={(val) => {
-                field.onChange(val.value);
-                handleChange && handleChange(val.value);
+                field.onChange(val.value ?? null);
+                handleChange && handleChange(val.value ?? null);
               }}
               className={`w-full ${errors[attribute] ? "p-invalid" : ""}`}
               placeholder={placeholder || defaultPlaceHolder}
