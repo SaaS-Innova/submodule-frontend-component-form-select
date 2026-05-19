@@ -17,6 +17,7 @@ export const Select = (props: ISelect) => {
     handleChange,
     appendTo,
     showClear = false,
+    prefixIcon,
   } = props;
   const { label, options, placeholder } = form[attribute];
   const { required, disabled } = form[attribute].rules;
@@ -57,28 +58,39 @@ export const Select = (props: ISelect) => {
     <div className={fieldClassName}>
       {fieldType !== IFormFieldType.NO_LABEL && labelElement}
       <div className={divClassName}>
-        <Controller
-          control={control}
-          name={attribute}
-          rules={inputValidator(form[attribute].rules, label)}
-          render={({ field }) => (
-            <Dropdown
-              options={options}
-              value={field.value}
-              onChange={(val) => {
-                field.onChange(val.value);
-                handleChange && handleChange(val.value);
-              }}
-              className={`w-full ${errors[attribute] ? "p-invalid" : ""}`}
-              placeholder={placeholder || defaultPlaceHolder}
-              appendTo={appendTo}
-              itemTemplate={itemTemplate}
-              valueTemplate={valueTemplate}
-              disabled={disabled}
-              showClear={showClear}
-            />
+        <div className="p-inputgroup">
+          {prefixIcon && (
+            <span className="p-prefix-icon">
+              {typeof prefixIcon === "string" ? (
+                <i className={prefixIcon}></i>
+              ) : (
+                prefixIcon
+              )}
+            </span>
           )}
-        />
+          <Controller
+            control={control}
+            name={attribute}
+            rules={inputValidator(form[attribute].rules, label)}
+            render={({ field }) => (
+              <Dropdown
+                options={options}
+                value={field.value}
+                onChange={(val) => {
+                  field.onChange(val.value);
+                  handleChange && handleChange(val.value);
+                }}
+                className={`w-full ${errors[attribute] ? "p-invalid" : ""}`}
+                placeholder={placeholder || defaultPlaceHolder}
+                appendTo={appendTo}
+                itemTemplate={itemTemplate}
+                valueTemplate={valueTemplate}
+                disabled={disabled}
+                showClear={showClear}
+              />
+            )}
+          />
+        </div>
         <FormFieldError data={{ errors, name: attribute }} />
       </div>
     </div>

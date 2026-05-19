@@ -8,4 +8,5 @@ export interface ISelect {
   valueTemplate?: (option: any, props: any) => JSX.Element;
   fieldType?: "top-label" | "no-label";
   showClear?: boolean;
+  prefixIcon?: JSX.Element | string;
 }
