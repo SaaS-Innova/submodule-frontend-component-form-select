@@ -17,6 +17,7 @@ export const Select = (props: ISelect) => {
     handleChange,
     appendTo,
     showClear = false,
+    filter = false,
     prefixIcon,
   } = props;
   const { label, options, placeholder } = form[attribute];
@@ -87,6 +88,7 @@ export const Select = (props: ISelect) => {
                 valueTemplate={valueTemplate}
                 disabled={disabled}
                 showClear={showClear}
+                filter={filter}
               />
             )}
           />
